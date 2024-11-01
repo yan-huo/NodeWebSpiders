@@ -5,13 +5,14 @@ const iconv = require('iconv-lite');
 const chardet = require('chardet');
 const notifier = require('node-notifier');
 
-// 爬取章节名、内容、下一章  css选择器
+// 爬取 章节名、内容、下一章  css选择器
 const chapterNameCssSelector = '.content h1';
 const contentCssSelector = '#content';
 const nextPageCssSelector = '.page_chapter ul li:nth-child(3) a';
 
 const baseUrl = 'https://www.biqugebar.cc';
 let configInfoPath = './测试.json';
+let configInfo = {};
 let currentPage = '';
 let nextPage = '';
 let allContent = [];
@@ -40,9 +41,12 @@ const colors = {
   white: '\x1b[37m'
 };
 
-function writeContentToTXT() {
+function writeContentToTXT(error) {
   fs.writeFileSync(filePath, allContent.join('\n'), 'utf-8');
   fs.writeFileSync('./lastSuccessHtml.txt', currentUrl);
+  if (!error) {
+    fs.writeFileSync('./errorHtml.txt', '');
+  }
   configInfo.lastPage = currentPage;
   fs.writeFileSync(configInfoPath, JSON.stringify(configInfo, null, '\t'));
   console.log('\n');
@@ -113,7 +117,7 @@ function spiderHtml(webUrl) {
       fs.writeFileSync('./errorHtml.txt', webUrl);
       console.log(`${colors.red}${errorText}${colors.reset}`, error);
       console.log('\n');
-      writeContentToTXT();
+      writeContentToTXT(true);
     });
 }
 
@@ -137,13 +141,15 @@ function getAllContent() {
   }
 }
 
-configInfoPath = './测试.json';
-const configInfo = require(configInfoPath);
-currentPage = configInfo.currentPage || currentPage;
-allContent = configInfo.allContent || allContent;
-filePath = configInfo.filePath || filePath;
-continueNextPage = configInfo.continueNextPage;
+module.exports = function start(path) {
+  configInfoPath = path;
+  configInfo = require(configInfoPath);
+  currentPage = configInfo.currentPage || currentPage;
+  allContent = configInfo.allContent || allContent;
+  filePath = configInfo.filePath || filePath;
+  continueNextPage = configInfo.continueNextPage;
 
-getAllContent();
-currentUrl = `${baseUrl}${currentPage}`;
-spiderHtml(currentUrl);
+  getAllContent();
+  currentUrl = `${baseUrl}${currentPage}`;
+  spiderHtml(currentUrl);
+};
