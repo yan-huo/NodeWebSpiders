@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="page_chapter">
+  <ul>
+    <li><a href="asn1">ans1</a></li>
+    <li><a href="asn2">ans2</a></li>
+    <li><a href="asn3">ans3</a></li>
+    <li><a href="asn4">ans4</a></li>
+  </ul>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+  console.log($('.page_chapter ul li').eq(2).find('a').attr('href'))
+</script>
+</body>
+</html>

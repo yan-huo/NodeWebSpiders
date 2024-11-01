@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>扫雷</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .box-wrapper {
+      width: fit-content;
+      margin: 0 auto;
+    }
+    .box-header {
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .header-left,.header-right {
+      width: 60px;
+      height: 100%;
+      flex-shrink: 0;
+    }
+    .header-center {
+      height: 100%;
+      flex: 1;
+    }
+    .box-main {
+    }
+    .mine-row-item {
+      display: flex;
+      align-items: center;
+    }
+    .mine-item-box {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="box-wrapper">
+  <div class="box-header">
+    <div class="header-left"></div>
+    <div class="header-center"></div>
+    <div class="header-right"></div>
+  </div>
+  <div class="box-main"></div>
+</div>
+</body>
+<script type="text/javascript">
+  var mineNumBox = document.querySelector('.header-left')
+  var mineTimeBox = document.querySelector('.header-right')
+  var mineFieldBox = document.querySelector('.box-main')
+  var mineRow = 9
+  var mineColumn = 9
+  var maxMineNum = mineRow * mineColumn
+  var mineCoordinates = []
+  var mineFieldData = []
+  function createMineNum() {
+    var num = Math.floor(Math.random() * maxMineNum)
+    if (num == 0 && num > maxMineNum * 0.8) {
+      return createMineNum()
+    }
+    return num
+  }
+  var mineNum = createMineNum()
+  function isMine(x, y) {
+    var mine = mineCoordinates.find(function(item) {
+      return item[0] == x && item[1] == y
+    })
+    return !!mine
+  }
+  function computeMineNum(x, y) {
+    var num = 0
+    for (var i = x - 1; i <= x + 1; i++) {
+      if (i < 0) {
+        continue
+      }
+      for (var j = y - 1; j <= y + 1; j++) {
+        if (j < 0) {
+          continue
+        }
+        if (isMine(i, j)) {
+          num++
+        }
+      }
+    }
+    return num
+  }
+  function createCoordinate() {
+    var x = Math.floor(Math.random() * 10)
+    var y = Math.floor(Math.random() * 10)
+    if (isMine(x, y)) {
+      return createCoordinate()
+    }
+    return [x, y]
+  }
+  for (var i = 0; i < mineNum; i++) {
+    mineCoordinates.push(createCoordinate())
+  }
+  console.log(mineCoordinates)
+  for (var x = 0; x < mineRow; x++) {
+    var rowData = []
+    for (var y = 0; y < mineColumn; y++) {
+      if (isMine(x, y)) {
+        rowData.push(-1)
+      } else {
+        rowData.push(computeMineNum(x, y))
+      }
+    }
+    mineFieldData.push(rowData)
+  }
+  console.log(mineFieldData)
+  var mainHtml = ''
+  for (var x = 0; x < mineRow; x++) {
+    var rowHtml = '<div class="mine-row-item">'
+    for (var y = 0; y < mineColumn; y++) {
+      var num = mineFieldData[x][y]
+      if (num < 0) {
+        num = '雷'
+      }
+      rowHtml += '<div class="mine-item-box">' + (num&&num || '') +'</div>'
+    }
+    rowHtml += '</div>'
+    mainHtml += rowHtml
+  }
+  mineFieldBox.innerHTML = mainHtml
+</script>
+</html>

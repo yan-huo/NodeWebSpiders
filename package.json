@@ -1,0 +1,35 @@
+{
+  "name": "NodeWebSpiders",
+  "version": "1.0.0",
+  "scripts": {
+    "startUnpkg": "node ModulesFromUnpkg/start",
+    "restartUnpkg": "node ModulesFromUnpkg/restart",
+    "startBiYing": "node ./BiYingBiZhi/start",
+    "restartBiYing": "node ./BiYingBiZhi/restart",
+    "checkBiYing": "node ./BiYingBiZhi/checkImg",
+    "startGuGong": "node ./GuGongBiZhi/start",
+    "restartGuGong": "node ./GuGongBiZhi/restart",
+    "checkGuGong": "node ./GuGongBiZhi/checkImg",
+    "startTodayBiYing": "node ./TodayBiYingBiZhi/start",
+    "restartTodayBiYing": "node ./TodayBiYingBiZhi/restart",
+    "checkBiAn": "node ./BiAnBiZhi/checkImg",
+    "startBiAn": "node ./BiAnBiZhi/start",
+    "restartBiAn": "node ./BiAnBiZhi/restart",
+    "checkWall": "node ./Wallpaperscraft/checkImg",
+    "startWall": "node ./Wallpaperscraft/start",
+    "restartWall": "node ./Wallpaperscraft/restart",
+    "startTxtAnalyzing": "node ./StoryTXTAnalyzing/main"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "chardet": "^2.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "get-pixels": "^3.3.3",
+    "http2": "^3.3.7",
+    "hyper": "0.0.9",
+    "iconv-lite": "^0.6.3",
+    "image-size": "^1.0.2",
+    "superagent": "^8.0.9",
+    "superagent-charset": "^1.2.0"
+  }
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>汉字时钟</title>
+  <style>
+    html,body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }
+    .time-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    .second-box {
+        width: 900px;
+        height: 900px;
+    }
+    .minute-box {
+        width: 700px;
+        height: 700px;
+    }
+    .hour-box {
+        width: 500px;
+        height: 500px;
+    }
+    .date-box {
+        width: 300px;
+        height: 300px;
+    }
+    .second-box, .minute-box, .hour-box, .date-box {
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .line {
+        position: absolute;
+        width: 450px;
+        height: 24px;
+        border-bottom: 1px solid #ff0000;
+        box-sizing: border-box;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .time-item {
+        position: absolute;
+        top: 50%;
+        left: calc(100% - 70px);
+        transform: translateY(-50%);
+        transition: transform 2s;
+    }
+    .time-item.active {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    .second-box .time-item {
+        transform-origin: -380px center;
+    }
+    .minute-box .time-item {
+        transform-origin: -280px center;
+    }
+    .hour-box .time-item {
+        transform-origin: -180px center;
+    }
+  </style>
+</head>
+<body>
+  <div class="time-wrapper">
+    <div class="second-box"></div>
+    <div class="minute-box"></div>
+    <div class="hour-box"></div>
+    <div class="date-box"></div>
+    <div class="line"></div>
+  </div>
+</body>
+<script type="text/javascript">
+  function numToCN(num) {
+    num = num || 0
+    var chnNumChar = [
+      '零',
+      '一',
+      '二',
+      '三',
+      '四',
+      '五',
+      '六',
+      '七',
+      '八',
+      '九'
+    ];
+    var chnUnitSection = ['', '万', '亿', '万亿', '亿亿'];
+    var chnUnitChar = ['', '十', '百', '千'];
+
+    function numToChn(num) {
+      var index = num.toString().indexOf('.');
+      if (index != -1) {
+        var str = num.toString().slice(index);
+        var a = '点';
+        for (var i = 1; i < str.length; i++) {
+          a += chnNumChar[parseInt(str[i])];
+        }
+        return a;
+      } else {
+        return;
+      }
+    }
+
+    //定义在每个小节的内部进行转化的方法，其他部分则与小节内部转化方法相同
+    function sectionToChinese(section) {
+      var str = '',
+        chnstr = '',
+        zero = false,
+        count = 0; //zero为是否进行补零， 第一次进行取余由于为个位数，默认不补零
+      while (section > 0) {
+        var v = section % 10; //对数字取余10，得到的数即为个位数
+        if (v == 0) {
+          //如果数字为零，则对字符串进行补零
+          if (zero) {
+            zero = false; //如果遇到连续多次取余都是0，那么只需补一个零即可
+            chnstr = chnNumChar[v] + chnstr;
+          }
+        } else {
+          zero = true; //第一次取余之后，如果再次取余为零，则需要补零
+          if (section == 1 && count == 1) {
+            str = '';
+          } else {
+            str = chnNumChar[v];
+          }
+          str += chnUnitChar[count];
+          chnstr = str + chnstr;
+        }
+        count++;
+        section = Math.floor(section / 10);
+      }
+      return chnstr;
+    }
+    //定义整个数字全部转换的方法，需要依次对数字进行10000为单位的取余，然后分成小节，按小节计算，当每个小节的数不足1000时，则需要进行补零
+
+    var a = numToChn(num) ? numToChn(num) : '';
+    num = Math.floor(num);
+    var unitPos = 0;
+    var strIns = '',
+      chnStr = '';
+    var needZero = false;
+
+    if (num === 0) {
+      return chnNumChar[0];
+    }
+    while (num > 0) {
+      var section = num % 10000;
+      if (needZero) {
+        chnStr = chnNumChar[0] + chnStr;
+      }
+      strIns = sectionToChinese(section);
+      strIns += section !== 0 ? chnUnitSection[unitPos] : chnUnitSection[0];
+      chnStr = strIns + chnStr;
+      needZero = section < 1000 && section > 0;
+      num = Math.floor(num / 10000);
+      unitPos++;
+    }
+
+    return chnStr + a;
+  }
+  var hourTexts = []
+  for (var i = 0; i < 24; i++) {
+    hourTexts.push(`${numToCN(i)}点`)
+  }
+  var minuteTexts = []
+  var secondTexts = []
+  for (var i = 0; i < 60; i++) {
+    minuteTexts.push(`${numToCN(i)}分`)
+    secondTexts.push(`${numToCN(i)}秒`)
+  }
+  var secondBox = document.querySelector('.second-box')
+  var minuteBox = document.querySelector('.minute-box')
+  var hourBox = document.querySelector('.hour-box')
+  var secondItemsHtml = ''
+  for (var i = 0; i < secondTexts.length; i++) {
+    secondItemsHtml += `<div class="time-item">${secondTexts[i]}</div>`
+  }
+  secondBox.innerHTML = secondItemsHtml
+  var secondItems = document.querySelectorAll('.second-box .time-item')
+  var minuteItemsHtml = ''
+  for (var i = 0; i < minuteTexts.length; i++) {
+    minuteItemsHtml += `<div class="time-item">${minuteTexts[i]}</div>`
+  }
+  minuteBox.innerHTML = minuteItemsHtml
+  var minuteItems = document.querySelectorAll('.minute-box .time-item')
+  var hourItemsHtml = ''
+  for (var i = 0; i < hourTexts.length; i++) {
+    hourItemsHtml += `<div class="time-item">${hourTexts[i]}</div>`
+  }
+  hourBox.innerHTML = hourItemsHtml
+  var hourItems = document.querySelectorAll('.hour-box .time-item')
+  setTimeout(function() {
+    for (var i = 0; i < secondItems.length; i++) {
+      secondItems[i].style.transform = `translateY(-50%) rotate(${-6 * i}deg)`
+    }
+    for (var i = 0; i < minuteItems.length; i++) {
+      minuteItems[i].style.transform = `translateY(-50%) rotate(${-6 * i}deg)`
+    }
+    for (var i = 0; i < hourItems.length; i++) {
+      hourItems[i].style.transform = `translateY(-50%) rotate(${-15 * i}deg)`
+    }
+  }, 500)
+  var year, month, day, h, m, s;
+  function start(init) {
+    var date = new Date()
+    year = date.getFullYear()
+    month = date.getMonth() + 1
+    day = date.getDate()
+    week = date.getDay()
+    h = date.getHours()
+    m = date.getMinutes()
+    s = date.getSeconds()
+    var dateText = `${year}年${month}月${day}日  星期${week ? numToCN(week) : '日'}`
+    for (var i = 0; i < secondItems.length; i++) {
+      secondItems[i].classList.remove('active')
+    }
+    setTimeout(function() {
+      secondItems[s].classList.add('active')
+    }, 300)
+    for (var i = 0; i < minuteItems.length; i++) {
+      minuteItems[i].classList.remove('active')
+    }
+    if (s == 0) {
+      setTimeout(function() {
+        minuteItems[m].classList.add('active')
+      }, 300)
+    } else {
+      minuteItems[m].classList.add('active')
+    }
+    for (var i = 0; i < hourItems.length; i++) {
+      hourItems[i].classList.remove('active')
+    }
+    if (m == 0) {
+      setTimeout(function() {
+        hourItems[h].classList.add('active')
+      }, 300)
+    } else {
+      hourItems[h].classList.add('active')
+    }
+    var rotateS = s * 6 % 360
+    var rotateM = m * 6 % 360
+    var rotateH = h * 15 % 360
+    if (!init) {
+      if (rotateS == 0) {
+        rotateS = 359.9
+        setTimeout(function() {
+          secondBox.style.transition = 'none'
+          secondBox.style.transform = 'translateY(-50%) translateX(-50%) rotate(0deg)'
+          setTimeout(function() {
+            secondBox.style.transition = 'transform 1s'
+          }, 90)
+        }, 900)
+      }
+      if (rotateM == 0) {
+        rotateM = 359.9
+        setTimeout(function() {
+          minuteBox.style.transition = 'none'
+          minuteBox.style.transform = 'translateY(-50%) translateX(-50%) rotate(0deg)'
+          setTimeout(function() {
+            minuteBox.style.transition = 'transform 1s'
+          }, 90)
+        }, 900)
+      }
+      if (rotateH == 0) {
+        rotateH = 359.9
+        setTimeout(function() {
+          hourBox.style.transition = 'none'
+          hourBox.style.transform = 'translateY(-50%) translateX(-50%) rotate(0deg)'
+          setTimeout(function() {
+            hourBox.style.transition = 'transform 1s'
+          }, 90)
+        }, 900)
+      }
+    }
+    secondBox.style.transform = `translateY(-50%) translateX(-50%) rotate(${rotateS}deg)`
+    minuteBox.style.transform = `translateY(-50%) translateX(-50%) rotate(${rotateM}deg)`
+    hourBox.style.transform = `translateY(-50%) translateX(-50%) rotate(${rotateH}deg)`
+  }
+  setTimeout(function() {
+    start(true)
+    secondBox.style.transition = 'transform 1s'
+    minuteBox.style.transition = 'transform 1s'
+    hourBox.style.transition = 'transform 1s'
+    setInterval(function() {
+      start()
+    }, 1000)
+  }, 2500)
+</script>
+</html>

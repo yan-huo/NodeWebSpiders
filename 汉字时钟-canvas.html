@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>汉字时钟-canvas</title>
+  <style>
+    html,body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    #time {
+        display: block;
+        margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="time"></canvas>
+</body>
+<script type="text/javascript">
+  function numToCN(num) {
+    num = num || 0
+    var chnNumChar = [
+      '零',
+      '一',
+      '二',
+      '三',
+      '四',
+      '五',
+      '六',
+      '七',
+      '八',
+      '九'
+    ];
+    var chnUnitSection = ['', '万', '亿', '万亿', '亿亿'];
+    var chnUnitChar = ['', '十', '百', '千'];
+
+    function numToChn(num) {
+      var index = num.toString().indexOf('.');
+      if (index != -1) {
+        var str = num.toString().slice(index);
+        var a = '点';
+        for (var i = 1; i < str.length; i++) {
+          a += chnNumChar[parseInt(str[i])];
+        }
+        return a;
+      } else {
+        return;
+      }
+    }
+
+    //定义在每个小节的内部进行转化的方法，其他部分则与小节内部转化方法相同
+    function sectionToChinese(section) {
+      var str = '',
+        chnstr = '',
+        zero = false,
+        count = 0; //zero为是否进行补零， 第一次进行取余由于为个位数，默认不补零
+      while (section > 0) {
+        var v = section % 10; //对数字取余10，得到的数即为个位数
+        if (v == 0) {
+          //如果数字为零，则对字符串进行补零
+          if (zero) {
+            zero = false; //如果遇到连续多次取余都是0，那么只需补一个零即可
+            chnstr = chnNumChar[v] + chnstr;
+          }
+        } else {
+          zero = true; //第一次取余之后，如果再次取余为零，则需要补零
+          if (section == 1 && count == 1) {
+            str = '';
+          } else {
+            str = chnNumChar[v];
+          }
+          str += chnUnitChar[count];
+          chnstr = str + chnstr;
+        }
+        count++;
+        section = Math.floor(section / 10);
+      }
+      return chnstr;
+    }
+    //定义整个数字全部转换的方法，需要依次对数字进行10000为单位的取余，然后分成小节，按小节计算，当每个小节的数不足1000时，则需要进行补零
+
+    var a = numToChn(num) ? numToChn(num) : '';
+    num = Math.floor(num);
+    var unitPos = 0;
+    var strIns = '',
+      chnStr = '';
+    var needZero = false;
+
+    if (num === 0) {
+      return chnNumChar[0];
+    }
+    while (num > 0) {
+      var section = num % 10000;
+      if (needZero) {
+        chnStr = chnNumChar[0] + chnStr;
+      }
+      strIns = sectionToChinese(section);
+      strIns += section !== 0 ? chnUnitSection[unitPos] : chnUnitSection[0];
+      chnStr = strIns + chnStr;
+      needZero = section < 1000 && section > 0;
+      num = Math.floor(num / 10000);
+      unitPos++;
+    }
+
+    return chnStr + a;
+  }
+  var hourTexts = []
+  for (var i = 0; i < 24; i++) {
+    hourTexts.push(`${numToCN(i)}点`)
+  }
+  var minuteTexts = []
+  var secondTexts = []
+  for (var i = 0; i < 60; i++) {
+    minuteTexts.push(`${numToCN(i)}分`)
+    secondTexts.push(`${numToCN(i)}秒`)
+  }
+  var client = document.querySelector('body')
+  var clientWidth = client.clientWidth
+  var clientHeight = client.clientHeight
+  var size = Math.min(clientWidth, clientHeight)
+  var timeCanvas = document.getElementById('time')
+  timeCanvas.width = size
+  timeCanvas.height = size
+  var timeCtx = timeCanvas.getContext('2d')
+  timeCtx.font = 'normal 16px sans-serif'
+  timeCtx.textAligh = 'left'
+  timeCtx.translate(size / 2, size / 2)
+  timeCtx.strokeStyle = '#000'
+  var year, month, day, week, h, m, s
+  function drawClock() {
+    timeCtx.save()
+    timeCtx.rotate(h * 15 * Math.PI / 180)
+    for (var i = 0; i < hourTexts.length; i++) {
+      timeCtx.beginPath()
+      var color = i == h ? '#ff0000' : '#000'
+      timeCtx.strokeStyle = color
+      timeCtx.strokeText(hourTexts[i], 200, -5)
+      timeCtx.closePath()
+      timeCtx.rotate(- Math.PI / 12)
+    }
+    timeCtx.restore()
+    timeCtx.save()
+    timeCtx.rotate(m * Math.PI/ 30)
+    for (var i = 0; i < minuteTexts.length; i++) {
+      timeCtx.beginPath()
+      var color = i == m ? '#ff0000' : '#000'
+      timeCtx.strokeStyle = color
+      timeCtx.strokeText(minuteTexts[i], 290, -5)
+      timeCtx.closePath()
+      timeCtx.rotate(- Math.PI / 30)
+    }
+    timeCtx.restore()
+    timeCtx.save()
+    timeCtx.rotate(s * Math.PI/ 30)
+    for (var i = 0; i < secondTexts.length; i++) {
+      timeCtx.beginPath()
+      var color = i == s ? '#ff0000' : '#000'
+      timeCtx.strokeStyle = color
+      timeCtx.strokeText(secondTexts[i], 380, -5)
+      timeCtx.closePath()
+      timeCtx.rotate(- Math.PI / 30)
+    }
+    timeCtx.restore()
+  }
+  function initTime() {
+    timeCtx.clearRect(-size/2, -size/2, size, size)
+    timeCtx.beginPath()
+    timeCtx.arc(0,0, 5, 0, Math.PI * 2, true)
+    timeCtx.fill()
+    timeCtx.closePath()
+    timeCtx.beginPath()
+    timeCtx.moveTo(0, 0)
+    timeCtx.lineTo(size / 2, 0)
+    timeCtx.fillStyle = '#ff0000'
+    timeCtx.stroke()
+    var date = new Date()
+    year = date.getFullYear()
+    month = date.getMonth() + 1
+    day = date.getDate()
+    week = date.getDay()
+    h = date.getHours()
+    m = date.getMinutes()
+    s = date.getSeconds()
+    var dateText = `${year}年${month}月${day}日  星期${week ? numToCN(week) : '日'}`
+    timeCtx.beginPath()
+    timeCtx.strokeStyle = '#ff0000'
+    timeCtx.strokeText(dateText, 10, -5)
+    timeCtx.closePath()
+  }
+  initTime()
+  drawClock()
+  setInterval(function() {
+    initTime()
+    drawClock()
+  }, 1000)
+</script>
+</html>
