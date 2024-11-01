@@ -3,12 +3,21 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const iconv = require('iconv-lite');
 const chardet = require('chardet');
+const notifier = require('node-notifier');
+
+// 爬取章节名、内容、下一章  css选择器
+const chapterNameCssSelector = '.content h1';
+const contentCssSelector = '#content';
+const nextPageCssSelector = '.page_chapter ul li:nth-child(3) a';
+
 const baseUrl = 'https://www.biqugebar.cc';
-let currentPage = '/12_12505/67550747.html';
+let configInfoPath = './测试.json';
+let currentPage = '';
 let nextPage = '';
+let allContent = [];
+let filePath = './测试.txt';
+let continueNextPage = false;
 let currentUrl = `${baseUrl}${currentPage}`;
-let allContent = ['\r\r《剑来》 烽火戏诸侯'];
-const filePath = './剑来2.txt';
 const replaceRules = [
   /<script>(.+?)<\/script>/g,
   /　/g,
@@ -20,17 +29,42 @@ const replaceRegex = new RegExp(
   replaceRules.map((rule) => rule.source).join('|'),
   'g'
 );
+const colors = {
+  reset: '\x1b[0m',
+  red: '\x1b[31m',
+  green: '\x1b[32m',
+  yellow: '\x1b[33m',
+  blue: '\x1b[34m',
+  magenta: '\x1b[35m',
+  cyan: '\x1b[36m',
+  white: '\x1b[37m'
+};
 
 function writeContentToTXT() {
   fs.writeFileSync(filePath, allContent.join('\n'), 'utf-8');
   fs.writeFileSync('./lastSuccessHtml.txt', currentUrl);
-  console.log('write success!', n);
+  configInfo.lastPage = currentPage;
+  fs.writeFileSync(configInfoPath, JSON.stringify(configInfo, null, '\t'));
+  console.log('\n');
+  console.log('\n');
+  console.log(
+    `${colors.green}write success!${colors.reset}`,
+    `${colors.red}${n}${colors.reset}`
+  );
+  console.log('\n');
+  console.log('\n');
+  notifier.notify({
+    title: `${filePath} 爬取`,
+    message: `爬取成功，本次共爬取 ${n} 条`,
+    sound: true, // 可选，在Mac上播放声音
+    wait: true // 可选，在notification显示时保持程序运行
+  });
 }
 
 var n = 0;
 function filterHtml($) {
-  let chapterName = $('.content h1').text();
-  let content = $('#content').html();
+  let chapterName = $(chapterNameCssSelector).text();
+  let content = $(contentCssSelector).html();
   content = content.replace(replaceRegex, '');
   content = content
     .split('<br>')
@@ -39,15 +73,18 @@ function filterHtml($) {
   chapterName = `\r\r${chapterName}\r\r`;
   content.unshift(chapterName);
   allContent = allContent.concat(content);
-  nextPage = $('.page_chapter ul li').eq(2).find('a').attr('href');
+  nextPage = $(nextPageCssSelector).attr('href');
 
-  return writeContentToTXT();
-  if (nextPage.indexOf('.html') >= 0) {
+  if (continueNextPage && nextPage.indexOf('.html') >= 0) {
+    currentPage = nextPage;
+    console.log(
+      `${colors.green}spider html success!${colors.reset}`,
+      `${colors.red}${n}${colors.reset}`
+    );
     currentUrl = `${baseUrl}${nextPage}`;
-    console.log('spider html success!', n);
     setTimeout(() => {
       spiderHtml(currentUrl);
-    }, Math.floor(Math.random() * 1500));
+    }, Math.floor(Math.random() * 1000));
   } else {
     writeContentToTXT();
   }
@@ -74,7 +111,7 @@ function spiderHtml(webUrl) {
       console.log('\n');
       var errorText = webUrl + ' 加载失败';
       fs.writeFileSync('./errorHtml.txt', webUrl);
-      console.log(errorText, error);
+      console.log(`${colors.red}${errorText}${colors.reset}`, error);
       console.log('\n');
       writeContentToTXT();
     });
@@ -100,5 +137,13 @@ function getAllContent() {
   }
 }
 
+configInfoPath = './测试.json';
+const configInfo = require(configInfoPath);
+currentPage = configInfo.currentPage || currentPage;
+allContent = configInfo.allContent || allContent;
+filePath = configInfo.filePath || filePath;
+continueNextPage = configInfo.continueNextPage;
+
 getAllContent();
+currentUrl = `${baseUrl}${currentPage}`;
 spiderHtml(currentUrl);
