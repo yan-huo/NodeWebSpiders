@@ -1,0 +1,44 @@
+[
+	{
+		"id": "d4cdd6fc-71d5-4269-ac59-3e2f0bfd7a80",
+		"name": "测试",
+		"path": "./StoryTXTAnalyzing/测试.txt",
+		"wordsNumber": "11563",
+		"pagesNumber": "24",
+		"chapterNumber": "1",
+		"progressPageNumber": "1",
+		"progressChapterId": "655f2e97-56e1-48be-9d1a-db0a2a8ed518",
+		"progressChapterPageIndex": "0",
+		"progressTime": "1730872563192",
+		"fontSize": "17",
+		"lineHeight": "25"
+	},
+	{
+		"id": "d37b3f5f-82e5-46c6-adac-f129e9aa4ca4",
+		"name": "武动乾坤",
+		"path": "./StoryTXTAnalyzing/武动乾坤.txt",
+		"wordsNumber": 4104817,
+		"pagesNumber": 9070,
+		"chapterNumber": 1324,
+		"progressPageNumber": 0,
+		"progressChapterId": "593f4e6e-399e-4688-a744-2760c78631c3",
+		"progressChapterPageIndex": 0,
+		"progressTime": 0,
+		"fontSize": 17,
+		"lineHeight": 25
+	},
+	{
+		"id": "643844b0-e14d-4310-808f-cda0c253181b",
+		"name": "剑来",
+		"path": "./StoryTXTAnalyzing/剑来.txt",
+		"wordsNumber": "12314059",
+		"pagesNumber": "25912",
+		"chapterNumber": "1179",
+		"progressPageNumber": "2",
+		"progressChapterId": "65455ced-c794-4808-b5d0-6f9fd18db59b",
+		"progressChapterPageIndex": "0",
+		"progressTime": "1730871883951",
+		"fontSize": "17",
+		"lineHeight": "25"
+	}
+]

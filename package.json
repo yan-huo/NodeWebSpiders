@@ -18,7 +18,8 @@
     "checkWall": "node ./Wallpaperscraft/checkImg",
     "startWall": "node ./Wallpaperscraft/start",
     "restartWall": "node ./Wallpaperscraft/restart",
-    "startTxtAnalyzing": "node ./StoryTXTAnalyzing/main"
+    "startTxtAnalyzing": "node ./StoryTXTAnalyzing/main",
+    "startWebService": "node ./webService-express/app"
   },
   "dependencies": {
     "axios": "^1.4.0",
