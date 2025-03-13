@@ -1,0 +1,23 @@
+{
+	"baseUrl": "https://www.bqgyy.net",
+	"currentPage": "/book/33507/7628524.html",
+	"allContent": [
+		"\n\n《完美世界》 辰东",
+		"\n\n一粒尘可填海，一根草斩尽日月星辰，弹指间天翻地覆。群雄并起，万族林立，诸圣争霸，乱天动地。问苍茫大地，谁主沉浮？！一个少年从大荒中走出，一切从这里开始……"
+	],
+	"filePath": "./完美世界.txt",
+	"chapterNameCssSelector": "#ss-reader-main>.info-title",
+	"contentCssSelector": ".content",
+	"contentSeparator": "</p>",
+	"nextPageCssSelector": ".read_nav.reader-bottom a:nth-child(3)",
+	"continueNextPage": true,
+	"chapterNameReplaceRules": [
+		"/笔趣阁 > 玄幻小说 > 完美世界 > /g"
+	],
+	"replaceRules": [
+		"/<p>/g",
+		"/（(.+?)）/g",
+		"/强烈的需求收藏与推荐啊~~~~/g"
+	],
+	"lastPage": "/book/33507/7631477.html"
+}

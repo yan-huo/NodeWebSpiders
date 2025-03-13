@@ -1,0 +1,19 @@
+{
+	"baseUrl": "https://www.bq08.cc",
+	"currentPage": "/book/36281/1.html",
+	"allContent": [
+		"\n\n《斗罗大陆》 唐家三少"
+	],
+	"filePath": "./斗罗大陆.txt",
+	"chapterNameCssSelector": ".content>h1.wap_none",
+	"contentCssSelector": "#chaptercontent",
+	"nextPageCssSelector": ".Readpage.pagedown #pb_next",
+	"replaceRules": [
+		"/<p class=\"readinline\">(.+?)<\\/p>/g",
+		"/本集预告：(.+?)请阅本集。/g",
+		"/本来小三还想发个本集人物设定出来，但后来一想，还是先保留了，不过悄悄告诉大家，在出场人物中，会有惊喜。嘿嘿。/g",
+		"/请收藏本站：https(.+?)笔趣阁手机版：https(.+?)cc/g"
+	],
+	"continueNextPage": true,
+	"lastPage": "/book/36281/610.html"
+}

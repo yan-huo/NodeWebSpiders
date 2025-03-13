@@ -1,0 +1,18 @@
+{
+	"baseUrl": "https://www.bq09.cc",
+	"currentPage": "/html/42900/1.html",
+	"allContent": [
+		"\n\n《斗罗大陆V重生唐三》 唐家三少",
+		"\n\n一代神王唐三，带着一点神识在宇宙中遨游，寻找妻子转世重生的世界。在神识的牵引下，他来到了一个叫做妖精大陆的地方，而他却发现，这是一个人类为刍狗的世界……"
+	],
+	"filePath": "./斗罗大陆V重生唐三.txt",
+	"chapterNameCssSelector": ".content>h1.wap_none",
+	"contentCssSelector": "#chaptercontent",
+	"nextPageCssSelector": ".Readpage.pagedown #pb_next",
+	"replaceRules": [
+		"/<p class=\"readinline\">(.+?)<\\/p>/g",
+		"/请收藏本站：https(.+?)笔趣阁手机版：https(.+?)cc/g"
+	],
+	"continueNextPage": true,
+	"lastPage": "/html/42900/1184.html"
+}

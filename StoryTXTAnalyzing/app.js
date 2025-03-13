@@ -44,7 +44,9 @@ const vm = new Vue({
       nextChapterPages: [],
       prevChapterId: '',
       currentChapterId: '',
-      nextChapterId: ''
+      nextChapterId: '',
+      fontsList: [],
+      iframeSrc: ''
     };
   },
   computed: {
@@ -92,12 +94,46 @@ const vm = new Vue({
         lineHeight: Math.floor(i * 1.5)
       });
     }
-    console.log(this.fontSizeList);
   },
   mounted() {
-    this.pageMainHeight = this.$refs.pageMain.clientHeight - 60;
-    this.pageMainWidth = this.$refs.pageMain.clientWidth - 20;
-    this.getChapterProcessData();
+    request({
+      url: 'http://192.168.1.94:50020/platform/user/loginVerify',
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      }
+    })({ userName: 'root', password: 'f01a2fccc8b477a5' }).then((res) => {
+      console.log(res);
+      this.iframeSrc = `http://192.168.1.29:8880/outline/plan/stencil?token=${res.token}`;
+    });
+    // this.pageMainHeight = this.$refs.pageMain.clientHeight - 60;
+    // this.pageMainWidth = this.$refs.pageMain.clientWidth - 20;
+    // this.getChapterProcessData();
+    // request({ url: '/fonts/list', method: 'get' })().then((data) => {
+    //   const style = document.createElement('style');
+    //   style.type = 'text/css';
+    //   let htmlText = '';
+    //   data.forEach((item) => {
+    //     item.list.forEach((font) => {
+    //       htmlText += `@font-face {
+    //         font-family: '${item.type}_${font.code}';
+    //         src: url('./fonts/${item.type}/${font.code}.${
+    //         font.suffix
+    //       }') format('${
+    //         font.suffix.toLowerCase() === 'otf' ? 'opentype' : 'truetype'
+    //       }');
+    //       }\n`;
+    //       htmlText += `.${item.type}_${font.code}{
+    //         font-family: '${item.type}_${font.code}';
+    //       }\n`;
+    //     });
+    //   });
+    //   style.innerHTML = htmlText;
+    //   document.head.appendChild(style);
+    //   this.$nextTick(() => {
+    //     this.fontsList = data;
+    //   });
+    // });
   },
   methods: {
     getChapterProcessData() {

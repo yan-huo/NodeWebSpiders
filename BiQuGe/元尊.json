@@ -1,0 +1,14 @@
+{
+	"baseUrl": "https://www.bqduo.cc",
+	"currentPage": "/biquge/41_41864/c15143933.html",
+	"allContent": [
+		"\n\n《元尊》 天蚕土豆",
+		"\n\n顺为凡，逆则仙，只在心中一念间……"
+	],
+	"filePath": "./元尊.txt",
+	"chapterNameCssSelector": ".bookname>h1",
+	"contentCssSelector": "#content",
+	"nextPageCssSelector": ".bottem2 a:nth-child(3)",
+	"continueNextPage": true,
+	"lastPage": "/biquge/41_41864/c23303461.html"
+}

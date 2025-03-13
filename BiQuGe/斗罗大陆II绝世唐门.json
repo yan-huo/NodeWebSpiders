@@ -1,0 +1,18 @@
+{
+	"baseUrl": "https://www.bq09.cc",
+	"currentPage": "/html/42893/1.html",
+	"allContent": [
+		"\n\n《斗罗大陆II绝世唐门》 唐家三少",
+		"\n\n大陆传奇，一战成名；凤凰圣女，风火流星神界刀法；双升融合，金阳蓝月，雷霆之怒，这里没有魔法，没有斗气，没有武术，却有武魂。唐门创立万年之后的斗罗大陆上，唐门式微。一代天骄横空出世， 新一代史莱克七怪能否重振唐门，谱写一曲绝世唐门之歌？百万年魂兽，手握日月摘星辰的死灵圣法神，导致唐门衰落的全新魂导器体系。一切的神奇都将一一展现。唐门暗器能否重振雄风，唐门能否重现辉煌，一切尽在《斗罗大陆》第二部——《绝世唐门》"
+	],
+	"filePath": "./斗罗大陆II绝世唐门.txt",
+	"chapterNameCssSelector": ".content>h1.wap_none",
+	"contentCssSelector": "#chaptercontent",
+	"nextPageCssSelector": ".Readpage.pagedown #pb_next",
+	"replaceRules": [
+		"/<p class=\"readinline\">(.+?)<\\/p>/g",
+		"/请收藏本站：https(.+?)笔趣阁手机版：https(.+?)cc/g"
+	],
+	"continueNextPage": true,
+	"lastPage": "/html/42893/626.html"
+}

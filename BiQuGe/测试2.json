@@ -1,0 +1,16 @@
+{
+	"baseUrl": "https://www.xxbqg5200.com",
+	"currentPage": "/shu/2695/1237261.html",
+	"allContent": [],
+	"filePath": "./测试2.txt",
+	"continueNextPage": false,
+	"requestHeaders": {
+		"Host": "www.xxbqg5200.com",
+		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0"
+	},
+	"chapterNameCssSelector": ".bookname>h1",
+	"contentCssSelector": "#content",
+	"nextPageCssSelector": ".bottem2 a:nth-child(4)",
+	"http2Request": true,
+	"lastPage": "/shu/2695/1237261.html"
+}

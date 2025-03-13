@@ -1,0 +1,18 @@
+{
+	"baseUrl": "https://www.bq09.cc",
+	"currentPage": "/html/42894/1.html",
+	"allContent": [
+		"\n\n《斗罗大陆III龙王传说》 唐家三少",
+		"\n\n伴随着魂导科技的进步，斗罗大陆上的人类征服了海洋，又发现了两片大陆。魂兽也随着人类魂师的猎杀无度走向灭亡，沉睡无数年的魂兽之王在星斗大森林最后的净土苏醒，它要带领仅存的族人，向人类 复仇！唐舞麟立志要成为一名强大的魂师，可当武魂觉醒时，苏醒的，却是……旷世之才，龙王之争，我们的龙王传说，将由此开始。"
+	],
+	"filePath": "./斗罗大陆III龙王传说.txt",
+	"chapterNameCssSelector": ".content>h1.wap_none",
+	"contentCssSelector": "#chaptercontent",
+	"nextPageCssSelector": ".Readpage.pagedown #pb_next",
+	"replaceRules": [
+		"/<p class=\"readinline\">(.+?)<\\/p>/g",
+		"/请收藏本站：https(.+?)笔趣阁手机版：https(.+?)cc/g"
+	],
+	"continueNextPage": true,
+	"lastPage": "/html/42894/1981.html"
+}

@@ -4,7 +4,7 @@ const chardet = require('chardet');
 const iconv = require('iconv-lite');
 const notifier = require('node-notifier');
 
-const txtFilePath = './StoryTXTAnalyzing/测试.txt';
+const txtFilePath = './StoryTXTAnalyzing/武动乾坤.txt';
 const novelTable = require('./novelTable.json');
 let novelChapterTable = require('./novelChapterTable.json');
 // let novelChapterTable = [];
@@ -85,7 +85,8 @@ function main(filePath) {
   const fromEncoding = chardet.detectFileSync(filePath);
   const buffer = fs.readFileSync(filePath);
   var fileContentData;
-  if (fromEncoding.toUpperCase().indexOf('utf') >= 0) {
+  // return console.log(fromEncoding);
+  if (fromEncoding.toUpperCase().indexOf('UTF') >= 0) {
     fileContentData = buffer.toString('utf8');
   } else {
     const converted = iconv.decode(buffer, fromEncoding);

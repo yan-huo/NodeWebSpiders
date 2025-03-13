@@ -1,0 +1,16 @@
+{
+	"baseUrl": "https://www.bqduo.cc",
+	"currentPage": "/biquge/35_35532/c11043204.html",
+	"allContent": [
+		"\n\n《圣墟》 辰东",
+		"\n\n在破败中崛起，在寂灭中复苏。",
+		"沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……。"
+	],
+	"filePath": "./圣墟.txt",
+	"chapterNameCssSelector": ".bookname>h1",
+	"contentCssSelector": "#content",
+	"nextPageCssSelector": ".bottem2 a:nth-child(3)",
+	"continueNextPage": true,
+	"endPage": "/biquge/35_35532/c23289669.html",
+	"lastPage": "/biquge/35_35532/c23289669.html"
+}

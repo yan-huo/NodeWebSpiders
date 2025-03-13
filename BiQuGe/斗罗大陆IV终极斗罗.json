@@ -1,0 +1,24 @@
+{
+	"baseUrl": "https://www.bqgyy.net",
+	"currentPage": "/book/4708/1251881.html",
+	"allContent": [
+		"\n\n《斗罗大陆IV终极斗罗》 唐家三少",
+		"\n\n一万年后，冰化了。",
+		"斗罗联邦科考队在极北之地科考时发现了一个有着金银双色花纹的蛋，用仪器探察之后，发现里面居然有生命体征，赶忙将其带回研究所进行孵化。蛋孵化出来了，可孵出来的却是一个婴儿，和人类一模一样的婴儿，一个蛋生的孩子。"
+	],
+	"filePath": "./斗罗大陆IV终极斗罗.txt",
+	"chapterNameCssSelector": "#ss-reader-main>.info-title",
+	"contentCssSelector": ".content",
+	"contentSeparator": "</p>",
+	"nextPageCssSelector": ".read_nav.reader-bottom a:nth-child(3)",
+	"continueNextPage": true,
+	"chapterNameReplaceRules": [
+		"/笔趣阁 > 玄幻小说 > 斗罗大陆IV终极斗罗 > /g"
+	],
+	"replaceRules": [
+		"/<p>/g",
+		"/（(.+?)）/g",
+		"/强烈的需求收藏与推荐啊~~~~/g"
+	],
+	"lastPage": "/book/4708/5395912.html"
+}

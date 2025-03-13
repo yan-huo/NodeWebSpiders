@@ -1,0 +1,14 @@
+{
+	"baseUrl": "https://www.bqduo.cc",
+	"currentPage": "/biquge/7_7478/c22984487.html",
+	"allContent": [
+		"\n\n《仙逆》 天蚕土豆",
+		"\n\n顺为凡，逆则仙，只在心中一念间……"
+	],
+	"filePath": "./仙逆.txt",
+	"chapterNameCssSelector": ".bookname>h1",
+	"contentCssSelector": "#content",
+	"nextPageCssSelector": ".bottem2 a:nth-child(3)",
+	"continueNextPage": true,
+	"lastPage": "/biquge/7_7478/c10297531.html"
+}

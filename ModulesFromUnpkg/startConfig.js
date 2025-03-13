@@ -15,9 +15,9 @@ module.exports = {
     // },
     {
       isFile: false, // 是否是直接抓取文件
-      filePath: './Download/mqtt', // 存储目录  Download是所有下载根目录
-      webUrl: 'https://unpkg.com/browse/mqtt@5.8.1/', // 爬取页面基础路径
-      fileUrl: 'https://unpkg.com/mqtt@5.8.1/' // 爬取文件基础路径
+      filePath: './Download/xlsx', // 存储目录  Download是所有下载根目录
+      webUrl: 'https://unpkg.com/browse/xlsx@0.18.5/', // 爬取页面基础路径
+      fileUrl: 'https://unpkg.com/xlsx@0.18.5/' // 爬取文件基础路径
     }
   ]
 };

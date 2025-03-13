@@ -1,0 +1,321 @@
+[
+  {
+    "type": "WeiXinDuShu",
+    "typeName": "微信读书",
+    "list": [
+      {
+        "name": "AI楷",
+        "code": "AIKai",
+        "suffix": "ttf"
+      },
+      {
+        "name": "仓耳今楷",
+        "code": "CangErJinKai",
+        "suffix": "ttf"
+      },
+      {
+        "name": "仓耳玄三",
+        "code": "CangErXuanSan",
+        "suffix": "ttf"
+      },
+      {
+        "name": "苍耳云黑",
+        "code": "CangErYunHei",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正聚珍新仿",
+        "code": "FangZhengJuZhenXinFang",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正兰亭黑",
+        "code": "FangZhengLanTingHei",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正兰亭圆",
+        "code": "FangZhengLanTingYuan",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正欧蝶正楷",
+        "code": "FangZhengOuDieZhengKai",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正盛世楷书",
+        "code": "FangZhengShengShiKaiShu",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正宋三",
+        "code": "FangZhengSongSan",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正悠宋",
+        "code": "FangZhengYouSong",
+        "suffix": "ttf"
+      },
+      {
+        "name": "汉仪空山楷",
+        "code": "HanYiKongShanKai",
+        "suffix": "ttf"
+      },
+      {
+        "name": "思源黑体",
+        "code": "SiYuanHeiTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "思源宋体",
+        "code": "SiYuanSongTi",
+        "suffix": "otf"
+      },
+      {
+        "name": "思源宋体-粗",
+        "code": "SiYuanSongTi-Bold",
+        "suffix": "otf"
+      },
+      {
+        "name": "霞鹜文楷",
+        "code": "XiaWuWenKai",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正楷体简体",
+        "code": "FangZhengKaiTiJianTi",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正兰亭细黑简体",
+        "code": "FangZhengLanTingXiHeiJianTi",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正兰亭圆简体",
+        "code": "FangZhengLanTingYuanJianTi",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正屏显雅宋简体",
+        "code": "FangZhengPingXianYaSongJianTi",
+        "suffix": "TTF"
+      },
+      {
+        "name": "华康翩翩体",
+        "code": "HuaKangPianPianTi",
+        "suffix": "otf"
+      },
+      {
+        "name": "华康手札体",
+        "code": "HuaKangShouZhaTi",
+        "suffix": "otf"
+      },
+      {
+        "name": "华康宋体",
+        "code": "HuaKangSongTi",
+        "suffix": "otf"
+      },
+      {
+        "name": "华康娃娃体",
+        "code": "HuaKangWaWaTi",
+        "suffix": "otf"
+      },
+      {
+        "name": "思源黑体",
+        "code": "SiYuanHeiTi",
+        "suffix": "otf"
+      },
+      {
+        "name": "造字工房刻宋体",
+        "code": "ZaoZiGongFangKeSongTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "造字工房漫语体",
+        "code": "ZaoZiGongFangManYuTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "造字工房情书体",
+        "code": "ZaoZiGongFangQingShuTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "造字工房素黑体",
+        "code": "ZaoZiGongFangSuHeiTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "造字工房雅言体",
+        "code": "ZaoZiGongFangYaYanTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "站酷快乐体",
+        "code": "ZhanKuKuaiLeTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "杨任东竹石体",
+        "code": "YangRenDongZhuShiTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "站酷文艺体",
+        "code": "ZhanKuWenYiTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正黑体",
+        "code": "FangZhengHeiTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正兰亭细黑",
+        "code": "FangZhengLanTingXiHei",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正隶变",
+        "code": "FangZhengLiBian",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正新楷体",
+        "code": "FangZhengXinKaiTi",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正新书宋",
+        "code": "FangZhengXinShuSong",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正悠黑",
+        "code": "FangZhengYouHei",
+        "suffix": "TTF"
+      },
+      {
+        "name": "明月楷体",
+        "code": "MingYueKaiTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "茶卡手写体",
+        "code": "ChaKaShouXieTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "方正新楷",
+        "code": "FangZhengXinKai",
+        "suffix": "TTF"
+      },
+      {
+        "name": "方正悠宋",
+        "code": "FangZhengYouSong",
+        "suffix": "ttf"
+      },
+      {
+        "name": "汉仪旗黑",
+        "code": "HanYiQiHei",
+        "suffix": "ttf"
+      },
+      {
+        "name": "汉仪宋仿",
+        "code": "HanYiShuFang",
+        "suffix": "ttf"
+      },
+      {
+        "name": "汉仪文宋",
+        "code": "HanYiWenSong",
+        "suffix": "ttf"
+      },
+      {
+        "name": "汉仪正圆",
+        "code": "HanYiZhengYuan",
+        "suffix": "ttf"
+      },
+      {
+        "name": "奶酪手写体",
+        "code": "NaiLaoShouXieTi",
+        "suffix": "ttf"
+      },
+      {
+        "name": "可爱体",
+        "code": "KeAiTi",
+        "suffix": "ttf"
+      }
+    ]
+  },
+  {
+    "type": "ShuQiXiaoShuo",
+    "typeName": "书旗小说",
+    "list": [
+      {
+        "name": "系统字体",
+        "code": "XiTongZiTi",
+        "suffix": "ttf"
+      }
+    ]
+  },
+  {
+    "type": "FanQieXiaoShuo",
+    "typeName": "番茄小说",
+    "list": [
+      {
+        "name": "番茄小说",
+        "code": "FYTWSJ",
+        "suffix": "ttf"
+      },
+      {
+        "name": "番茄小说",
+        "code": "QDHGG",
+        "suffix": "ttf"
+      }
+    ]
+  },
+  {
+    "type": "AiQiYiXiaoShuo",
+    "typeName": "爱奇艺小说",
+    "list": [
+      {
+        "name": "爱奇艺小说",
+        "code": "ETXiZY18030F",
+        "suffix": "ttf"
+      },
+      {
+        "name": "爱奇艺小说",
+        "code": "FS18030FHY",
+        "suffix": "ttf"
+      },
+      {
+        "name": "汉仪旗黑",
+        "code": "HanYiQiHei",
+        "suffix": "ttf"
+      },
+      {
+        "name": "爱奇艺小说",
+        "code": "HYLeiMTGBKF",
+        "suffix": "ttf"
+      },
+      {
+        "name": "爱奇艺小说",
+        "code": "KT18030FHY",
+        "suffix": "ttf"
+      },
+      {
+        "name": "爱奇艺小说",
+        "code": "SS18030FHY",
+        "suffix": "ttf"
+      },
+      {
+        "name": "爱奇艺小说",
+        "code": "XLS18030FHY",
+        "suffix": "ttf"
+      }
+    ]
+  }
+]

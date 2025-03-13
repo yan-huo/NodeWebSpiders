@@ -1,0 +1,23 @@
+{
+	"baseUrl": "https://www.bqgyy.net",
+	"currentPage": "/book/18780/4543684.html",
+	"allContent": [
+		"\n\n《武动乾坤》 天蚕土豆",
+		"\n\n修炼一途，乃窃阴阳，夺造化，转涅槃，握生死，掌轮回。武之极，破苍穹，动乾坤！"
+	],
+	"filePath": "./武动乾坤.txt",
+	"chapterNameCssSelector": "#ss-reader-main>.info-title",
+	"contentCssSelector": ".content",
+	"contentSeparator": "</p>",
+	"nextPageCssSelector": ".read_nav.reader-bottom a:nth-child(3)",
+	"continueNextPage": true,
+	"chapterNameReplaceRules": [
+		"/笔趣阁 > 玄幻小说 > 武动乾坤 > /g"
+	],
+	"replaceRules": [
+		"/<p>/g",
+		"/（(.+?)）/g",
+		"/强烈的需求收藏与推荐啊~~~~/g"
+	],
+	"lastPage": "/book/18780/7592601.html"
+}

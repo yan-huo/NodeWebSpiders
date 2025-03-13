@@ -1,0 +1,14 @@
+{
+	"baseUrl": "https://www.bqduo.cc",
+	"currentPage": "/biquge/59_59091/c323485.html",
+	"allContent": [
+		"\n\n《明朝那些事儿》 当年明月",
+		"\n\n主要讲述的是从1344年到1644年这三百年间关于明朝的一些故事。以史料为基础，以年代和具体人物为主线，并加入了小说的笔法，语言幽默风趣。对明朝十七帝和其他王公权贵和小人物的命运进行全景展示.."
+	],
+	"filePath": "./明朝那些事儿.txt",
+	"chapterNameCssSelector": ".bookname>h1",
+	"contentCssSelector": "#content",
+	"nextPageCssSelector": ".bottem2 a:nth-child(3)",
+	"continueNextPage": true,
+	"lastPage": "/biquge/59_59091/c43965184.html"
+}

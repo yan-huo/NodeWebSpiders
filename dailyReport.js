@@ -23,8 +23,8 @@ Promise.all([
       params: {
         pageSize: 100,
         pageNo: 1,
-        reportDateStart: '2024-07-01',
-        reportDateEnd: '2024-09-30',
+        reportDateStart: '2024-10-01',
+        reportDateEnd: '2024-12-31',
         authCode: 'LOOK_myOaReport',
         token: 'dd51a67891ef494e86674e9191567198',
         userId: 'dd51a67891ef494e86674e9191567198',
@@ -38,8 +38,8 @@ Promise.all([
       params: {
         pageSize: 100,
         pageNo: 1,
-        reportDateStart: '2024-07-01',
-        reportDateEnd: '2024-09-30',
+        reportDateStart: '2024-10-01',
+        reportDateEnd: '2024-12-31',
         authCode: 'LOOK_myOaReport',
         token: 'dd51a67891ef494e86674e9191567198',
         userId: 'dd51a67891ef494e86674e9191567198',

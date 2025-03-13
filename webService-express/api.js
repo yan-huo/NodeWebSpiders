@@ -9,6 +9,29 @@ const commonCtrl = (req, res, next) => {
 
 const routers = [
   {
+    router: '/fonts/list',
+    method: 'get',
+    ctrlList: [
+      commonCtrl,
+      (req, res, next) => {
+        const list = require('../StoryTXTAnalyzing/fonts/fonts.json');
+        if (list) {
+          res.send({
+            code: 1,
+            message: 'success',
+            data: list
+          });
+        } else {
+          res.send({
+            code: 1,
+            message: 'success',
+            data: []
+          });
+        }
+      }
+    ]
+  },
+  {
     router: '/chapterContent/byProgressChapterId',
     method: 'get',
     ctrlList: [
